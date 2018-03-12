@@ -1,5 +1,8 @@
 package main
 
+//TODO add a limitation on the memory of the redis (usage with info), relative to the total
+//TODO fix recalculation each launch
+
 import (
 	"github.com/go-redis/redis"
 	"log"
@@ -39,15 +42,14 @@ func main() {
 	done := make(chan bool)
 	sendRedis := make(chan Tribonachi)
 
-	go trib(sendRedis, done)
+	go trib(sendRedis, done, 0)
 	go worker(sendRedis, everySecond, done)
 
 	wg.Wait()
 
 }
 
-func trib(sendRedis chan Tribonachi, done chan bool) {
-
+func trib(sendRedis chan Tribonachi, done chan bool, int int) {
 	a := big.NewInt(0)
 	b := big.NewInt(0)
 	c := big.NewInt(1)
@@ -56,7 +58,6 @@ func trib(sendRedis chan Tribonachi, done chan bool) {
 	var limit big.Int
 	limit.Exp(big.NewInt(10), big.NewInt(109999), nil)
 	for a.Cmp(&limit) < 0 {
-		i++
 		tmp = a.Add(a, b)
 		a.Add(c, tmp)
 		a, b, c = b, c, a
