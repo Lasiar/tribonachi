@@ -11,7 +11,7 @@ func SetPort() string {
 	fmt.Print("port -> ")
 	_, err := fmt.Scanln(&port)
 	if err != nil {
-		log.Fatal(err)
+		log.Println(err)
 	}
 	_, err = strconv.Atoi(port)
 	if err != nil {
@@ -22,6 +22,7 @@ func SetPort() string {
 }
 
 func SetRouter() string {
+	//TODO	add validation
 	var router string
 	fmt.Print("router -> ")
 	_, err := fmt.Scanln(&router)
@@ -29,4 +30,20 @@ func SetRouter() string {
 		log.Fatal(err)
 	}
 	return router
+}
+
+func SetRedis() string {
+	//TODO add validation
+	var redis string
+	fmt.Print("use docker-compose? (default yes) y/n -> ")
+	if AskForConfirmation() {
+		fmt.Print("redis url:port -> ")
+		_, err := fmt.Scanln(&redis)
+		if err != nil {
+			log.Println(err)
+		}
+	} else {
+		redis = "db:6379"
+	}
+	return redis
 }
