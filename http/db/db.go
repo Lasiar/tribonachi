@@ -3,13 +3,14 @@ package db
 import (
 	"github.com/go-redis/redis"
 	"log"
+	"for_job/http/lib"
 )
 
 var Cash *redis.Client
 
 func Connect() {
 	Cash = redis.NewClient(&redis.Options{
-		Addr:     "db:6379",
+		Addr:     lib.Config.Redis,
 		Password: "", // no password set
 		DB:       0,  // use default DB
 	})
