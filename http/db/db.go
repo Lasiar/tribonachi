@@ -18,3 +18,11 @@ func Connect() {
 		log.Println("Error connect redis: ", err)
 	}
 }
+
+func Check() bool {
+	err := Cash.Ping().Err()
+	if err != nil {
+		return false
+	}
+	return true
+}

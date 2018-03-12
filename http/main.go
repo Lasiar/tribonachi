@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"for_job/http/db"
 	"for_job/http/lib"
+	"for_job/http/system"
 	"for_job/http/web"
 	"net/http"
-	"for_job/http/system"
 )
 
 func init() {

@@ -5,21 +5,43 @@ import (
 	"fmt"
 	"for_job/http/lib"
 	"for_job/http/system"
-	"log"
 	"net/http"
+	"regexp"
 	"strconv"
+	"strings"
 )
 
+var regularAlpha, _ = regexp.Compile("[[:alpha:]]")
+
 func HttpServer(w http.ResponseWriter, r *http.Request) {
-	var t lib.Tribonacci
+	var t lib.Response
+	defer func() {
+		jsBlob, _ := json.Marshal(t)
+		fmt.Fprint(w, string(jsBlob))
+	}()
 	key := r.FormValue("n")
-	n, err := strconv.Atoi(key)
+	n64, err := strconv.ParseUint(key, 10, 32)
 	if err != nil {
-		log.Println(err)
+		switch {
+		case strings.Contains(fmt.Sprint(err), "parsing \"-"):
+			t.Message = "error: N non positiv. N must only postiv number "
+		case regularAlpha.MatchString(fmt.Sprintln(err)[28:]):
+			t.Message = "error: N non number. N must only positiv number"
+		default:
+			t.Message = fmt.Sprint(err)
+		}
+		fmt.Println(fmt.Sprintln(err)[28:])
+		return
 	}
-	t.Number = system.Trib(n)
-	jsBlob, _ := json.Marshal(t)
-	fmt.Println(string(jsBlob))
-	fmt.Fprint(w, string(jsBlob))
+	n := uint32(n64)
+	t.Number, err = system.Trib(n)
+	if err != nil {
+		switch {
+		case strings.Contains(fmt.Sprint(err), "unavailable"):
+			t.Message = "To count large N, you need to run with back and redis in compose"
+		}
+	} else {
+		t.Message = "success"
+	}
 	return
 }

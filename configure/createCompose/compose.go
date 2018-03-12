@@ -10,7 +10,7 @@ import (
 )
 
 func New() {
-	fmt.Print("use volume (for backup) y/n ->")
+	fmt.Print("use volume (for backup redis, default n) y/n ->")
 	if service.AskForConfirmation() {
 		createDockerCompose()
 	} else {

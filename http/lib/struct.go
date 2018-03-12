@@ -1,7 +1,8 @@
 package lib
 
-type Tribonacci struct {
-	Number string `json:"tribonacci"`
+type Response struct {
+	Message string `json:"message"`
+	Number  string `json:"tribonacci"`
 }
 
 type ConfigStructure struct {

@@ -9,12 +9,13 @@ import (
 	"strconv"
 )
 
-func tribOnLocal(n int) string {
+func tribOnLocal(n uint32) string {
+	var i uint32
 	n = n - 1
 	a := 0
 	b := 0
 	c := 1
-	for i := 0; i < n; i++ {
+	for i = 0; i < n; i++ {
 		a, b, c = b, c, a+b+c
 	}
 	return strconv.Itoa(a)
