@@ -7,8 +7,8 @@ import (
 )
 
 func Trib(n uint32) (string, error) {
-	if n < 100 {
-		return tribOnLocal(n), nil
+	if n <= 76 {
+		return tribOnLocal(int(n)), nil
 	}
 
 	if !db.Check() {
