@@ -10,6 +10,7 @@ import (
 	"strconv"
 	"sync"
 	"time"
+	"strings"
 )
 
 var (
@@ -37,8 +38,10 @@ func init() {
 
 func main() {
 	wg.Add(2)
-
 	everySecond := time.NewTicker(1 * time.Second)
+
+	checkLoad(everySecond)
+
 	done := make(chan bool)
 	sendRedis := make(chan Tribonachi)
 
@@ -72,11 +75,24 @@ func makeTrib(a *big.Int, i uint) Tribonachi {
 	t.Number = a.String()
 	t.N = strconv.FormatUint(uint64(i), 10)
 	return t
+}
 
+func checkLoad(ticker *time.Ticker) {
+	for {
+		<-ticker.C
+		str, err := Cash.Info("persistence").Result()
+		if err != nil {
+			log.Println(err)
+		}
+		if !strings.Contains(str, "loading:1") {
+			return
+		}
+	}
 }
 
 func worker(sendRedis chan Tribonachi, ticker *time.Ticker, done chan bool) {
 	var arr []Tribonachi
+L:
 	for {
 		select {
 		case a := <-sendRedis:
@@ -89,6 +105,7 @@ func worker(sendRedis chan Tribonachi, ticker *time.Ticker, done chan bool) {
 				err := Cash.Set(a.N, a.Number, 0).Err()
 				if err != nil {
 					log.Println(err)
+					continue L
 				}
 			}
 			arr = nil

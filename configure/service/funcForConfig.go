@@ -39,7 +39,7 @@ func SetRouter() string {
 func SetRedis() string {
 	//TODO add validation
 	var redis string
-	fmt.Print("use docker-compose? (default yes) y/n -> ")
+	fmt.Print("use docker-compose, if no you must install redis? (default yes) y/n -> ")
 	if AskForConfirmation() {
 		fmt.Print("redis url:port -> ")
 		_, err := fmt.Scanln(&redis)

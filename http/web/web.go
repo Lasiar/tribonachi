@@ -20,6 +20,10 @@ func HttpServer(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprint(w, string(jsBlob))
 	}()
 	key := r.FormValue("n")
+	if key == "" {
+		t.Message = "please enter n example: '" + fmt.Sprint(r.URL)+ "?n=10'"
+		return
+	}
 	n64, err := strconv.ParseUint(key, 10, 32)
 	if err != nil {
 		switch {
