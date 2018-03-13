@@ -27,7 +27,10 @@ func SetRouter() string {
 	var router string
 	fmt.Print("router -> ")
 	_, err := fmt.Scanln(&router)
-	if err != nil {
+	if router == "" {
+		router = "/"
+	}
+ 	if err != nil {
 		log.Fatal(err)
 	}
 	return router
