@@ -14,6 +14,7 @@ import (
 var regularAlpha, _ = regexp.Compile("[[:alpha:]]")
 
 func HttpServer(w http.ResponseWriter, r *http.Request) {
+	//TODO refactor this, looks ugly
 	var t lib.Response
 	defer func() {
 		jsBlob, _ := json.Marshal(t)
@@ -40,10 +41,7 @@ func HttpServer(w http.ResponseWriter, r *http.Request) {
 	n := uint32(n64)
 	t.Number, err = system.Trib(n)
 	if err != nil {
-		switch {
-		case strings.Contains(fmt.Sprint(err), "unavailable"):
-			t.Message = "To count large N, you need to run with back and redis in compose"
-		}
+		t.Message = fmt.Sprint(err)
 	} else {
 		t.Message = "success"
 	}
