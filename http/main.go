@@ -10,8 +10,8 @@ import (
 )
 
 func init() {
-	db.Connect()
 	system.Config()
+	db.Connect()
 }
 
 func main() {

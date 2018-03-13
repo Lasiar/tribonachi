@@ -7,13 +7,14 @@ import (
 )
 
 func SetPort() string {
+	//TODO add validation
 	var port string
-	fmt.Print("port -> ")
-	_, err := fmt.Scanln(&port)
-	if err != nil {
-		log.Println(err)
+	fmt.Print("port  (default 8080) -> ")
+	fmt.Scanln(&port)
+	if port == "" {
+		port = "8080"
 	}
-	_, err = strconv.Atoi(port)
+	_, err := strconv.Atoi(port)
 	if err != nil {
 		log.Println("incorrect value", err, "please write the numbers")
 		return SetPort()
@@ -35,7 +36,7 @@ func SetRouter() string {
 func SetRedis() string {
 	//TODO add validation
 	var redis string
-	fmt.Print("use docker-compose? (default yes) y/n -> ")
+	fmt.Print("use docker-compose, if no you must install redis? (default yes) y/n -> ")
 	if AskForConfirmation() {
 		fmt.Print("redis url:port -> ")
 		_, err := fmt.Scanln(&redis)

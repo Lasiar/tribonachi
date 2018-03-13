@@ -6,9 +6,19 @@ import (
 	"log"
 	"os"
 	"strings"
+	"path/filepath"
 )
 
 func SetValue() string {
+	path := setPath()
+	fullPath, err := filepath.Abs(path)
+	if err != nil {
+		log.Println(err)
+	}
+	return fullPath + ":/data"
+}
+
+func setPath() string {
 	var path string
 	fmt.Print("where save db? (enter path) ->")
 	_, err := fmt.Scanln(&path)
@@ -26,11 +36,11 @@ func SetValue() string {
 			err := os.MkdirAll(path, 0777)
 			if err != nil {
 				log.Println(err)
-				return SetValue()
+				return setPath()
 			}
 			return path
 		} else {
-			return SetValue()
+			return setPath()
 		}
 	}
 	return path

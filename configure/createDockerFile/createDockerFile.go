@@ -10,9 +10,9 @@ ENTRYPOINT /bin/sh -c ./binary_back
 `)
 
 	http := []byte(`FROM alpine:3.4
-COPY bin /bin/binary_back
+COPY ./ /bin/
 WORKDIR /bin
-ENTRYPOINT /bin/sh -c ./binary_back
+ENTRYPOINT /bin/sh -c ./bin
 `)
 
 	ioutil.WriteFile("./back/Dockerfile", back, 0644)

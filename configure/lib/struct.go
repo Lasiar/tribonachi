@@ -20,11 +20,13 @@ type DockerComposeWithVolumes struct {
 
 type BackGround struct {
 	Build string `yaml:"build"`
+	DependsOn []string `yaml:"depends_on"`
 }
 
 type Web struct {
 	Build string   `yaml:"build"`
 	Ports []string `yaml:"ports"`
+	DependsOn []string `yaml:"depends_on"`
 }
 
 type RedisWithDocker struct {
