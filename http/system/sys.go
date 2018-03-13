@@ -28,5 +28,4 @@ func Config() {
 	if err != nil {
 		fmt.Println("Unmarshal config", err)
 	}
-	fmt.Println(lib.Config)
 }
