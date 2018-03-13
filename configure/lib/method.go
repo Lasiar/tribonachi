@@ -14,11 +14,13 @@ func (c *DockerComposeWithoutVolumes) SetVersion() {
 
 func (c *Web) SetHttp() {
 	c.Build = "./http"
+	c.DependsOn = append(c.DependsOn, "db")
 	c.Ports = append(c.Ports, service.SetPortDocer())
 }
 
 func (c *BackGround) SetBack() {
 	c.Build = "./back"
+	c.DependsOn = append(c.DependsOn, "db")
 }
 
 func (c *RedisWithoutVolume) SetRedisImage() {
