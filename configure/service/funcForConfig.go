@@ -10,14 +10,11 @@ func SetPort() string {
 	//TODO add validation
 	var port string
 	fmt.Print("port  (default 8080) -> ")
-	_, err := fmt.Scanln(&port)
+	fmt.Scanln(&port)
 	if port == "" {
 		port = "8080"
 	}
-	if err != nil {
-		log.Println(err)
-	}
-	_, err = strconv.Atoi(port)
+	_, err := strconv.Atoi(port)
 	if err != nil {
 		log.Println("incorrect value", err, "please write the numbers")
 		return SetPort()

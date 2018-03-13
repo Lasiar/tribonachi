@@ -37,6 +37,7 @@ func createFile(c interface{}) {
 
 func createDockerCompose() {
 	var c lib.DockerComposeWithVolumes
+	c.SetVersion()
 	c.Services.Http.SetHttp()
 	c.Services.Back.SetBack()
 	c.Services.DB.SetRedisImage()

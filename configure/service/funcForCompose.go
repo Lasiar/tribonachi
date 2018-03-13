@@ -6,11 +6,16 @@ import (
 	"log"
 	"os"
 	"strings"
+	"path/filepath"
 )
 
 func SetValue() string {
 	path := setPath()
-	return path + ":/data"
+	fullPath, err := filepath.Abs(path)
+	if err != nil {
+		log.Println(err)
+	}
+	return fullPath + ":/data"
 }
 
 func setPath() string {
