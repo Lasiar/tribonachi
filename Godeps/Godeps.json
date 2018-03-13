@@ -1,0 +1,55 @@
+{
+	"ImportPath": "for_job",
+	"GoVersion": "go1.9",
+	"GodepVersion": "v79",
+	"Packages": [
+		"./..."
+	],
+	"Deps": [
+		{
+			"ImportPath": "github.com/go-redis/redis",
+			"Comment": "v6.9.1-1-ge5648e8",
+			"Rev": "e5648e8c7c8ef178ad34188aec4492d11796bf51"
+		},
+		{
+			"ImportPath": "github.com/go-redis/redis/internal",
+			"Comment": "v6.9.1-1-ge5648e8",
+			"Rev": "e5648e8c7c8ef178ad34188aec4492d11796bf51"
+		},
+		{
+			"ImportPath": "github.com/go-redis/redis/internal/consistenthash",
+			"Comment": "v6.9.1-1-ge5648e8",
+			"Rev": "e5648e8c7c8ef178ad34188aec4492d11796bf51"
+		},
+		{
+			"ImportPath": "github.com/go-redis/redis/internal/hashtag",
+			"Comment": "v6.9.1-1-ge5648e8",
+			"Rev": "e5648e8c7c8ef178ad34188aec4492d11796bf51"
+		},
+		{
+			"ImportPath": "github.com/go-redis/redis/internal/pool",
+			"Comment": "v6.9.1-1-ge5648e8",
+			"Rev": "e5648e8c7c8ef178ad34188aec4492d11796bf51"
+		},
+		{
+			"ImportPath": "github.com/go-redis/redis/internal/proto",
+			"Comment": "v6.9.1-1-ge5648e8",
+			"Rev": "e5648e8c7c8ef178ad34188aec4492d11796bf51"
+		},
+		{
+			"ImportPath": "github.com/go-redis/redis/internal/singleflight",
+			"Comment": "v6.9.1-1-ge5648e8",
+			"Rev": "e5648e8c7c8ef178ad34188aec4492d11796bf51"
+		},
+		{
+			"ImportPath": "github.com/go-redis/redis/internal/util",
+			"Comment": "v6.9.1-1-ge5648e8",
+			"Rev": "e5648e8c7c8ef178ad34188aec4492d11796bf51"
+		},
+		{
+			"ImportPath": "gopkg.in/yaml.v2",
+			"Comment": "v2.1.1",
+			"Rev": "7f97868eec74b32b0982dd158a51a446d1da7eb5"
+		}
+	]
+}

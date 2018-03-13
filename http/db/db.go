@@ -4,7 +4,6 @@ import (
 	"github.com/go-redis/redis"
 	"log"
 	"for_job/http/lib"
-	"fmt"
 )
 
 var Cash *redis.Client

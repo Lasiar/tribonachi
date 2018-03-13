@@ -10,7 +10,7 @@ import (
 
 func New() {
 	var c ConfigHttp
-	fmt.Print("use default config for http? y/n")
+	fmt.Print("use default config for http? y/n -> ")
 	if service.AskForConfirmation() {
 		c.SetDefaultConfig()
 	} else {
