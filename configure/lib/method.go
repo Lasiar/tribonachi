@@ -29,5 +29,5 @@ func (c *RedisWithoutVolume) SetRedisImage() {
 
 func (c *RedisWithDocker) SetRedisImage() {
 	c.Image = "redis:alpine"
-	c.Volume = service.SetValue()
+	c.Volumes = append(c.Volumes, service.SetValumes())
 }

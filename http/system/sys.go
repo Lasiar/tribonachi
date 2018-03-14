@@ -11,7 +11,7 @@ import (
 func tribOnLocal(n int) string {
 	var i int
 	n = n - 1
-	var a ,b ,c uint64 = 0,0,1
+	var a, b, c uint64 = 0, 0, 1
 	for i = 0; i < n; i++ {
 		a, b, c = b, c, a+b+c
 	}

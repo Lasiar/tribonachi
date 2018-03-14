@@ -5,11 +5,11 @@ import (
 	"for_job/configure/readConifg"
 	"log"
 	"os"
-	"strings"
 	"path/filepath"
+	"strings"
 )
 
-func SetValue() string {
+func SetValumes() string {
 	path := setPath()
 	fullPath, err := filepath.Abs(path)
 	if err != nil {

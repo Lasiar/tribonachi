@@ -22,7 +22,7 @@ func HttpServer(w http.ResponseWriter, r *http.Request) {
 	}()
 	key := r.FormValue("n")
 	if key == "" {
-		t.Message = "please enter n example: '" + fmt.Sprint(r.URL)+ "?n=10'"
+		t.Message = "please enter n example: '" + fmt.Sprint(r.URL) + "?n=10'"
 		return
 	}
 	n64, err := strconv.ParseUint(key, 10, 32)

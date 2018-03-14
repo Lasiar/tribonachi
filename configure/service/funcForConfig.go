@@ -30,7 +30,7 @@ func SetRouter() string {
 	if router == "" {
 		router = "/"
 	}
- 	if err != nil {
+	if err != nil {
 		log.Fatal(err)
 	}
 	return router

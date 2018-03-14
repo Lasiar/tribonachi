@@ -1,9 +1,9 @@
 package db
 
 import (
+	"for_job/http/lib"
 	"github.com/go-redis/redis"
 	"log"
-	"for_job/http/lib"
 )
 
 var Cash *redis.Client

@@ -8,9 +8,9 @@ import (
 	"log"
 	"math/big"
 	"strconv"
+	"strings"
 	"sync"
 	"time"
-	"strings"
 )
 
 var (
